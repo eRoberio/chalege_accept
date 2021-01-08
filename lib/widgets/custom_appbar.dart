@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
@@ -7,21 +8,15 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
-    return Scaffold(
-        body: Container(color: Colors.red,
-      height: deviceSize.height * 9,
-      
-// rest code here
-    ));
-  }
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: CustomAppBar(),
-      body: Text('Minha Loja'),
+    return ClipPath(
+      clipper: WaveClipperOne(),
+      child: Container(
+        height: 280,
+        color: Colors.redAccent,
+        child: Center(
+          child: Text("Minha Loja",style: TextStyle(fontSize: 20),),
+        ),
+      ),
     );
   }
 }
