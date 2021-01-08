@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "331147349131",
+    "project_id": "chalege-accept",
+    "storage_bucket": "chalege-accept.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:331147349131:android:92ead2342672d0699dd88e",
+        "android_client_info": {
+          "package_name": "br.com.desafio.chalege_accept"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "331147349131-1b5d723a114m048ote5lv2au2lv03de4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9EMBUHChhtbQqJ5XI0sizLCVwjkBYChE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "331147349131-1b5d723a114m048ote5lv2au2lv03de4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
