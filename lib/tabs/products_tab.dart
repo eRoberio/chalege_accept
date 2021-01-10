@@ -1,12 +1,16 @@
+import 'package:chalege_accept/services/repository.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:chalege_accept/tiles/category_tile.dart';
+import 'package:get_it/get_it.dart';
 
 class ProductsTab extends StatelessWidget {
+  final repository = GetIt.I<Repository>();
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<QuerySnapshot>(
-      future: Firestore.instance.collection("products").getDocuments(),
+      future: _fire(),
       builder: (context, snapshot) {
         if (!snapshot.hasData)
           return Center(
@@ -26,5 +30,18 @@ class ProductsTab extends StatelessWidget {
         }
       },
     );
+  }
+
+  Future<QuerySnapshot> _fire() async {
+    List<DocumentSnapshot> list;
+
+    QuerySnapshot querySnapshot =
+        await Firestore.instance.collection("products").getDocuments();
+    list = querySnapshot.documents;
+
+    list.forEach((document) {
+      print(document.documentID);
+      return document;
+    });
   }
 }
