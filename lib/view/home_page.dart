@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 import 'package:chalege_accept/view/product_page.dart';
+import 'package:dotted_border/dotted_border.dart';
 
 class HomePage extends StatefulWidget {
   static String tag = '/HomePage';
@@ -91,17 +92,20 @@ class _HomePageState extends State<HomePage> {
                       SizedBox(
                         height: 40,
                       ),
-                      Container(
-                        width: 300.0,
-                        padding: EdgeInsets.only(top: 16.0),
-                        child: RaisedButton(
-                          child: Text("Nossos produtos",
-                              style: TextStyle(
-                                color: Colors.white,
-                              )),
-                          colorBrightness: Brightness.dark,
-                          onPressed: () {},
-                          color: Colors.redAccent,
+                      DottedBorder(
+                        color: Colors.yellowAccent,
+                        strokeWidth: -2,
+                        child: Container(
+                          width: 300.0,
+                          child: RaisedButton(
+                            child: Text("Nossos produtos",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                )),
+                            colorBrightness: Brightness.dark,
+                            onPressed: () {},
+                            color: Colors.transparent,
+                          ),
                         ),
                       ),
                     ],

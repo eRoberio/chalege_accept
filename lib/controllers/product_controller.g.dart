@@ -54,6 +54,21 @@ mixin _$ProductController on _ProductControllerBase, Store {
     });
   }
 
+  final _$precoAtom = Atom(name: '_ProductControllerBase.preco');
+
+  @override
+  String get preco {
+    _$precoAtom.reportRead();
+    return super.preco;
+  }
+
+  @override
+  set preco(String value) {
+    _$precoAtom.reportWrite(value, super.preco, () {
+      super.preco = value;
+    });
+  }
+
   final _$excluidoAtom = Atom(name: '_ProductControllerBase.excluido');
 
   @override
@@ -175,6 +190,17 @@ mixin _$ProductController on _ProductControllerBase, Store {
   }
 
   @override
+  void setPreco(String value) {
+    final _$actionInfo = _$_ProductControllerBaseActionController.startAction(
+        name: '_ProductControllerBase.setPreco');
+    try {
+      return super.setPreco(value);
+    } finally {
+      _$_ProductControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setExcluido(bool value) {
     final _$actionInfo = _$_ProductControllerBaseActionController.startAction(
         name: '_ProductControllerBase.setExcluido');
@@ -246,6 +272,7 @@ mixin _$ProductController on _ProductControllerBase, Store {
 productData: ${productData},
 titulo: ${titulo},
 descricao: ${descricao},
+preco: ${preco},
 excluido: ${excluido},
 feito: ${feito},
 data: ${data},

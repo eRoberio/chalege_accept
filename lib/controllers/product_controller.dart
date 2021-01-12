@@ -1,4 +1,6 @@
 import 'package:chalege_accept/models/product_models.dart';
+import 'package:chalege_accept/widgets/currency_input_formatter.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:mobx/mobx.dart';
 import 'dart:io';
@@ -29,6 +31,12 @@ abstract class _ProductControllerBase with Store {
 
   @action
   void setDescricao(String value) => descricao = value;
+
+ @observable
+  String preco;
+
+  @action
+  void setPreco(String value) => preco = value;
 
   @observable
   bool excluido;
@@ -129,11 +137,10 @@ abstract class _ProductControllerBase with Store {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Novo Produto'),
+          title: Center(child: Text('Novo Produto')),
           content: Form(
             key: form,
-            child: Container(
-              height: MediaQuery.of(context).size.height / 3,
+            child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -157,40 +164,56 @@ abstract class _ProductControllerBase with Store {
                     },
                   ),
                   SizedBox(
-                    height: 20,
+                    height: 10,
                   ),
                   Text('Título'),
                   Observer(
                     builder: (BuildContext context) {
                       return TextFormField(
                         decoration: InputDecoration(
-                          hintText: 'Ex.: Comprar ração',
+                          hintText: 'Ex.: Pão Françês',
+                         
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
                         ),
-                        validator: (value) {
-                          if (value.isEmpty) {
-                            return 'Este campo não pode ser vazio';
-                          }
-                          return null;
-                        },
                         onChanged: setTitulo,
                       );
                     },
                   ),
-                  SizedBox(height: 20),
+                  SizedBox(height: 10),
                   Text('Descrição'),
                   Observer(
                     builder: (BuildContext context) {
                       return TextFormField(
                         decoration: InputDecoration(
-                          hintText: '(Opcional)',
+                          hintText: 'Ex.: Esse pão com manteiga é muito bom. ',
+                          
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
                         ),
                         onChanged: setDescricao,
+                      );
+                    },
+                  ),
+                  SizedBox(height: 10),
+                  Text('Preço'),
+                  Observer(
+                    builder: (BuildContext context) {
+                      return TextFormField(
+                        inputFormatters: [
+                          FilteringTextInputFormatter.digitsOnly,
+                          CurrencyPtBrInputFormatter(maxDigits: 8),
+                        ],
+                        keyboardType: TextInputType.number,
+                        decoration: InputDecoration(
+                          hintText: 'Ex.: 3,00 ',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                        onChanged: setPreco,
                       );
                     },
                   ),
@@ -203,12 +226,15 @@ abstract class _ProductControllerBase with Store {
               onPressed: () => Navigator.of(context).pop(),
               child: Text('Cancelar'),
             ),
-            FlatButton(
+            Observer(
+              builder: (BuildContext context) {
+                return FlatButton(
               onPressed: () async {
                 if (form.currentState.validate()) {
                   await Firestore.instance.collection('products').add({
                     'titulo': titulo,
                     'descricao': descricao,
+                    'preco': preco,
                     'feito': false,
                     'data': Timestamp.now(),
                     'excluido': false,
@@ -219,9 +245,18 @@ abstract class _ProductControllerBase with Store {
               },
               color: Colors.green,
               child: Text('Salvar'),
+            );
+              },
             ),
           ],
         );
+        
+        
+        
+        
+        
+        
+        
       },
     );
   }

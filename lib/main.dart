@@ -1,6 +1,7 @@
 import 'package:chalege_accept/controllers/home_controller.dart';
 import 'package:chalege_accept/controllers/product_controller.dart';
 import 'package:chalege_accept/view/home_page.dart';
+import 'package:chalege_accept/services/repository.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
@@ -14,6 +15,7 @@ void main() async {
 void setupLocators() {
   GetIt.I.registerSingleton<HomeController>(HomeController());
   GetIt.I.registerSingleton<ProductController>(ProductController());
+  GetIt.I.registerSingleton<Repository>(Repository());
 }
 
 class MyApp extends StatelessWidget {
