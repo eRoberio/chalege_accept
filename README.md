@@ -8,4 +8,4 @@ Foi com muito prazer que ao me dedicar durante esses 7 dias entrego esse desafio
 ## Getting Started
 A ideia inicial desse aplicativo foi criar um CRUD, que nada mais é do que uma estrutura de um projeto comum.
 O banco de dados utilizado foi o Firebase, o aplicativo tem apenas duas telas sendo home_page e product_page, para usá-lo basta apenas instalar os plugins e a lib com as classes.
-Foi utilizado também para gerência de estado o MobX e o GetIt para injeção de dependências. O qual permitiu com que uma navegação de maneira mais simples fosse criada. 
+Foi utilizado também para o isolamento de estado do MobX e o GetIt para injeção de dependências. O qual vínculo com que uma navegação de maneira mais simples fosse criada.
