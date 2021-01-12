@@ -10,3 +10,5 @@ A ideia inicial desse aplicativo foi criar um CRUD, que nada mais é do que uma 
 O banco de dados utilizado para o Firebase, o aplicativo tem apenas duas telas sendo home_page e product_page, para revelar-lo basta instalar os plugins e a lib com as classes.
 Foi utilizado também para o isolamento de estado do MobX e o GetIt para injeção de dependências. O qual vínculo com que uma navegação de maneira mais simples fosse criada.
 Respeitei também uma estrutura de projeto (model-view-controller), onde me proporcionou uma quantidade imensa de possibilidades de organização.
+
+![image](https://user-images.githubusercontent.com/48862266/104388114-4b3f9900-5517-11eb-95c8-9cea374f3b04.png)
