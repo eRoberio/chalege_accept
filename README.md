@@ -1,16 +1,8 @@
 # chalege_accept
 
-A new Flutter project.
+Chalege Accept é um app que está em desenvolvimento para nível técnico, uma forma de seleção.
+A finalidade do desafio foi criar um app de forma organizada obedecendo os critérios de estrutura de projeto, lógicamente e visualmente.
+UM CRUD simples que ao desenvolver, fez com que o conhecimento prático e analítico crescesse de forma exponêncial em cada linha de código que foi adicionada.
+Foi com muito prazer que ao me dedicar durante esses 7 dias entrego esse desafio técnico, para quem está lendo, tenha certeza de que eu pesquisei bastante para entregar o projeto da forma que está hoje (ninguém é detentor de todo conhecimento).Sou grato primeiramente a Deus por ter me concedido a mentalidade de pesquisar e a raciocinar para resolver os problemas que apareceram, e também Marcos Marques, que confiou em passar esse desafio técnico.
 
 ## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
