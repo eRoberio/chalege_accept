@@ -17,7 +17,8 @@ Respeitei também uma estrutura de projeto (model-view-controller), onde me prop
 ![image](https://user-images.githubusercontent.com/48862266/104396822-2c96cd80-552a-11eb-961b-5ff664bbe8ef.png)
 ![image](https://user-images.githubusercontent.com/48862266/104396983-87302980-552a-11eb-814e-cfe74980292a.png)
 ![image](https://user-images.githubusercontent.com/48862266/104397036-a75fe880-552a-11eb-9a96-6fc9bb1db5e2.png)
-
+![image](https://user-images.githubusercontent.com/48862266/104398037-c495b680-552c-11eb-8b91-c6c95c95411e.png)
+![image](https://user-images.githubusercontent.com/48862266/104398243-20603f80-552d-11eb-8edf-534217a32795.png)
 
 [FireBase]
 ![image](https://user-images.githubusercontent.com/48862266/104395730-23a4fc80-5528-11eb-9d4f-51bc8b5687aa.png)
