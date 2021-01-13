@@ -11,4 +11,10 @@ O banco de dados utilizado para o Firebase, o aplicativo tem apenas duas telas s
 Foi utilizado também para o isolamento de estado do MobX e o GetIt para injeção de dependências. O qual vínculo com que uma navegação de maneira mais simples fosse criada.
 Respeitei também uma estrutura de projeto (model-view-controller), onde me proporcionou uma quantidade imensa de possibilidades de organização.
 
+[HomePage]
 ![image](https://user-images.githubusercontent.com/48862266/104393682-cd35bf00-5523-11eb-83ca-6bf7adf10914.png)
+
+
+
+[FireBase]
+![image](https://user-images.githubusercontent.com/48862266/104395730-23a4fc80-5528-11eb-9d4f-51bc8b5687aa.png)
