@@ -9,6 +9,28 @@ part of 'product_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$ProductController on _ProductControllerBase, Store {
+  Computed<bool> _$formValidComputed;
+
+  @override
+  bool get formValid =>
+      (_$formValidComputed ??= Computed<bool>(() => super.formValid,
+              name: '_ProductControllerBase.formValid'))
+          .value;
+  Computed<bool> _$tituloValidComputed;
+
+  @override
+  bool get tituloValid =>
+      (_$tituloValidComputed ??= Computed<bool>(() => super.tituloValid,
+              name: '_ProductControllerBase.tituloValid'))
+          .value;
+  Computed<bool> _$precoValidComputed;
+
+  @override
+  bool get precoValid =>
+      (_$precoValidComputed ??= Computed<bool>(() => super.precoValid,
+              name: '_ProductControllerBase.precoValid'))
+          .value;
+
   final _$productDataAtom = Atom(name: '_ProductControllerBase.productData');
 
   @override
@@ -358,7 +380,10 @@ preco: ${preco},
 excluido: ${excluido},
 feito: ${feito},
 data: ${data},
-snapshot: ${snapshot}
+snapshot: ${snapshot},
+formValid: ${formValid},
+tituloValid: ${tituloValid},
+precoValid: ${precoValid}
     ''';
   }
 }
