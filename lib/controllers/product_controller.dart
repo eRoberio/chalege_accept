@@ -41,7 +41,7 @@ abstract class _ProductControllerBase with Store {
   void setMensagem(String value) => mensagem = value;
 
   @observable
-  String descricao;
+  String descricao = "";
 
   @action
   void setDescricao(String value) => descricao = value;
