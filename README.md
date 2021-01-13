@@ -16,6 +16,8 @@ Respeitei também uma estrutura de projeto (model-view-controller), onde me prop
 
 [ProductPage]
 ![image](https://user-images.githubusercontent.com/48862266/104396822-2c96cd80-552a-11eb-961b-5ff664bbe8ef.png)
+![image](https://user-images.githubusercontent.com/48862266/104396983-87302980-552a-11eb-814e-cfe74980292a.png)
+![image](https://user-images.githubusercontent.com/48862266/104397036-a75fe880-552a-11eb-9a96-6fc9bb1db5e2.png)
 
 
 [FireBase]
