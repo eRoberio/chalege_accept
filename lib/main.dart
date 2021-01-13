@@ -15,7 +15,6 @@ void main() async {
 void setupLocators() {
   GetIt.I.registerSingleton<HomeController>(HomeController());
   GetIt.I.registerSingleton<ProductController>(ProductController());
-  GetIt.I.registerSingleton<Repository>(Repository());
 }
 
 class MyApp extends StatelessWidget {

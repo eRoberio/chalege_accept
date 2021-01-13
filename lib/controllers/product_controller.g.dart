@@ -39,6 +39,36 @@ mixin _$ProductController on _ProductControllerBase, Store {
     });
   }
 
+  final _$productsAtom = Atom(name: '_ProductControllerBase.products');
+
+  @override
+  Future<List<ProductData>> get products {
+    _$productsAtom.reportRead();
+    return super.products;
+  }
+
+  @override
+  set products(Future<List<ProductData>> value) {
+    _$productsAtom.reportWrite(value, super.products, () {
+      super.products = value;
+    });
+  }
+
+  final _$mensagemAtom = Atom(name: '_ProductControllerBase.mensagem');
+
+  @override
+  String get mensagem {
+    _$mensagemAtom.reportRead();
+    return super.mensagem;
+  }
+
+  @override
+  set mensagem(String value) {
+    _$mensagemAtom.reportWrite(value, super.mensagem, () {
+      super.mensagem = value;
+    });
+  }
+
   final _$descricaoAtom = Atom(name: '_ProductControllerBase.descricao');
 
   @override
@@ -102,15 +132,30 @@ mixin _$ProductController on _ProductControllerBase, Store {
   final _$dataAtom = Atom(name: '_ProductControllerBase.data');
 
   @override
-  DateTime get data {
+  Timestamp get data {
     _$dataAtom.reportRead();
     return super.data;
   }
 
   @override
-  set data(DateTime value) {
+  set data(Timestamp value) {
     _$dataAtom.reportWrite(value, super.data, () {
       super.data = value;
+    });
+  }
+
+  final _$isUpdateAtom = Atom(name: '_ProductControllerBase.isUpdate');
+
+  @override
+  bool get isUpdate {
+    _$isUpdateAtom.reportRead();
+    return super.isUpdate;
+  }
+
+  @override
+  set isUpdate(bool value) {
+    _$isUpdateAtom.reportWrite(value, super.isUpdate, () {
+      super.isUpdate = value;
     });
   }
 
@@ -126,22 +171,6 @@ mixin _$ProductController on _ProductControllerBase, Store {
   set snapshot(Stream<QuerySnapshot> value) {
     _$snapshotAtom.reportWrite(value, super.snapshot, () {
       super.snapshot = value;
-    });
-  }
-
-  final _$documentSnapshotAtom =
-      Atom(name: '_ProductControllerBase.documentSnapshot');
-
-  @override
-  DocumentSnapshot get documentSnapshot {
-    _$documentSnapshotAtom.reportRead();
-    return super.documentSnapshot;
-  }
-
-  @override
-  set documentSnapshot(DocumentSnapshot value) {
-    _$documentSnapshotAtom.reportWrite(value, super.documentSnapshot, () {
-      super.documentSnapshot = value;
     });
   }
 
@@ -173,6 +202,17 @@ mixin _$ProductController on _ProductControllerBase, Store {
         name: '_ProductControllerBase.setTitulo');
     try {
       return super.setTitulo(value);
+    } finally {
+      _$_ProductControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setMensagem(String value) {
+    final _$actionInfo = _$_ProductControllerBaseActionController.startAction(
+        name: '_ProductControllerBase.setMensagem');
+    try {
+      return super.setMensagem(value);
     } finally {
       _$_ProductControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -223,7 +263,7 @@ mixin _$ProductController on _ProductControllerBase, Store {
   }
 
   @override
-  void setData(DateTime value) {
+  void setData(Timestamp value) {
     final _$actionInfo = _$_ProductControllerBaseActionController.startAction(
         name: '_ProductControllerBase.setData');
     try {
@@ -234,11 +274,11 @@ mixin _$ProductController on _ProductControllerBase, Store {
   }
 
   @override
-  void setDocSnapshot(DocumentSnapshot value) {
+  void setIsUpdate(bool value) {
     final _$actionInfo = _$_ProductControllerBaseActionController.startAction(
-        name: '_ProductControllerBase.setDocSnapshot');
+        name: '_ProductControllerBase.setIsUpdate');
     try {
-      return super.setDocSnapshot(value);
+      return super.setIsUpdate(value);
     } finally {
       _$_ProductControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -256,11 +296,77 @@ mixin _$ProductController on _ProductControllerBase, Store {
   }
 
   @override
-  dynamic showDialogExcluir(BuildContext context) {
+  dynamic showDialogExcluir(BuildContext context, String id) {
     final _$actionInfo = _$_ProductControllerBaseActionController.startAction(
         name: '_ProductControllerBase.showDialogExcluir');
     try {
-      return super.showDialogExcluir(context);
+      return super.showDialogExcluir(context, id);
+    } finally {
+      _$_ProductControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic readProducts() {
+    final _$actionInfo = _$_ProductControllerBaseActionController.startAction(
+        name: '_ProductControllerBase.readProducts');
+    try {
+      return super.readProducts();
+    } finally {
+      _$_ProductControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  Future<void> deleteProduct(String id) {
+    final _$actionInfo = _$_ProductControllerBaseActionController.startAction(
+        name: '_ProductControllerBase.deleteProduct');
+    try {
+      return super.deleteProduct(id);
+    } finally {
+      _$_ProductControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void updateProduct(BuildContext context, ProductData product) {
+    final _$actionInfo = _$_ProductControllerBaseActionController.startAction(
+        name: '_ProductControllerBase.updateProduct');
+    try {
+      return super.updateProduct(context, product);
+    } finally {
+      _$_ProductControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic showFormUpdate({BuildContext context, ProductData product}) {
+    final _$actionInfo = _$_ProductControllerBaseActionController.startAction(
+        name: '_ProductControllerBase.showFormUpdate');
+    try {
+      return super.showFormUpdate(context: context, product: product);
+    } finally {
+      _$_ProductControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic showFormCreate({BuildContext context}) {
+    final _$actionInfo = _$_ProductControllerBaseActionController.startAction(
+        name: '_ProductControllerBase.showFormCreate');
+    try {
+      return super.showFormCreate(context: context);
+    } finally {
+      _$_ProductControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic zerarVariaveis() {
+    final _$actionInfo = _$_ProductControllerBaseActionController.startAction(
+        name: '_ProductControllerBase.zerarVariaveis');
+    try {
+      return super.zerarVariaveis();
     } finally {
       _$_ProductControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -271,13 +377,15 @@ mixin _$ProductController on _ProductControllerBase, Store {
     return '''
 productData: ${productData},
 titulo: ${titulo},
+products: ${products},
+mensagem: ${mensagem},
 descricao: ${descricao},
 preco: ${preco},
 excluido: ${excluido},
 feito: ${feito},
 data: ${data},
-snapshot: ${snapshot},
-documentSnapshot: ${documentSnapshot}
+isUpdate: ${isUpdate},
+snapshot: ${snapshot}
     ''';
   }
 }

@@ -1,7 +1,5 @@
 import 'package:chalege_accept/controllers/product_controller.dart';
-import 'package:chalege_accept/view/productSelected.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dotted_border/dotted_border.dart';
+import 'package:chalege_accept/models/product_models.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -19,14 +17,17 @@ class _ProductPageState extends State<ProductPage> {
 
   @override
   Widget build(BuildContext context) {
+    setState(() {
+      controller.readProducts();
+    });
     return Scaffold(
       backgroundColor: Colors.grey[200],
       body: Observer(
         builder: (BuildContext context) {
-          return StreamBuilder(
-            stream: controller.snapshot,
-            builder:
-                (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          return FutureBuilder<List<ProductData>>(
+            future: controller.products,
+            builder: (BuildContext context,
+                AsyncSnapshot<List<ProductData>> snapshot) {
               if (snapshot.hasError) {
                 return Center(child: Text('Error: ${snapshot.error}'));
               }
@@ -35,17 +36,16 @@ class _ProductPageState extends State<ProductPage> {
                 return Center(child: CircularProgressIndicator());
               }
 
-              if (snapshot.data.documents.length == 0) {
+              if (snapshot.data.length == 0) {
                 return Center(
                     child: Text('Lamento, nenhum produto encontrado :( '));
               }
 
               return ListView.builder(
-                itemCount: snapshot.data.documents.length,
+                itemCount: snapshot.data.length,
                 itemBuilder: (BuildContext context, int i) {
-                  var doc = snapshot.data.documents[i];
-                  controller.setDocSnapshot(doc);
-                  var item = doc.data;
+                  var doc = snapshot.data[i];
+                  controller.setProductData(doc);
 
                   // print('todo/${doc.reference.documentID}');
 
@@ -62,12 +62,12 @@ class _ProductPageState extends State<ProductPage> {
                             borderRadius: BorderRadius.circular(10),
                           ),
                           margin: const EdgeInsets.all(5),
-                          child: InkWell(
-                            child: Container(
-                              color: Colors.white,
-                              height: 70,
-                              width: 340,
+                          child: Container(
+                            color: Colors.white,
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
                               child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.start,
@@ -75,33 +75,34 @@ class _ProductPageState extends State<ProductPage> {
                                       Icon(Icons.check_circle),
                                     ],
                                   ),
-                                  Text(item['titulo']),
-                                  Text(item['descricao']),
-                                  Text(item['preco']),
+                                  Text('${i + 1}- ${doc.titulo}'),
+                                  Text(doc.descricao),
+                                  Text(doc.preco),
                                 ],
                               ),
                             ),
-                            onTap: () {
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (context) => ProductSelected(doc),
-                                ),
-                              );
-                            },
                           ),
                         ),
                         secondaryActions: <Widget>[
-                          IconSlideAction(
-                              caption: 'Editar',
-                              icon: Icons.edit,
-                              color: Colors.black,
-                              onTap: () {}),
+                          Observer(builder: (BuildContext context) {
+                            return IconSlideAction(
+                                caption: 'Editar',
+                                icon: Icons.edit,
+                                color: Colors.black,
+                                onTap: () {
+                                  controller.setIsUpdate(true);
+                                  controller.updateProduct(context, doc);
+                                });
+                          }),
                           IconSlideAction(
                               caption: 'Excluir',
                               icon: Icons.block,
                               color: Colors.red[400],
                               onTap: () {
-                                controller.showDialogExcluir(context);
+                                controller.showDialogExcluir(
+                                  context,
+                                  doc.id,
+                                );
                               })
                         ],
                       ),
@@ -113,25 +114,16 @@ class _ProductPageState extends State<ProductPage> {
           );
         },
       ),
-      floatingActionButton: DottedBorder(
-        color: Colors.redAccent,
-        padding: EdgeInsets.only(left: 8, right: 8),
-        strokeWidth: 2,
-        child: Container(
-          width: 300.0,
-          child: RaisedButton(
-            child: Text(
-              "Adicionar novo",
-              style: TextStyle(
-                color: Colors.black,
-              ),
-            ),
-            onPressed: () => controller.createProduct(context),
-
-            
-            color: Color.fromARGB(255, 249, 220, 220),
-          ),
-        ),
+      floatingActionButton: Observer(
+        builder: (BuildContext context) {
+          return FloatingActionButton(
+            onPressed: () {
+              controller.setIsUpdate(false);
+              controller.createProduct(context);
+            },
+            child: Icon(Icons.add),
+          );
+        },
       ),
     );
   }
