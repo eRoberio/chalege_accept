@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class ProductData {
   String id;
   String titulo;
-  String descricao;
+  String descricao = '';
   String preco;
   bool excluido;
   bool feito;

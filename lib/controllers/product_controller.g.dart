@@ -144,21 +144,6 @@ mixin _$ProductController on _ProductControllerBase, Store {
     });
   }
 
-  final _$isUpdateAtom = Atom(name: '_ProductControllerBase.isUpdate');
-
-  @override
-  bool get isUpdate {
-    _$isUpdateAtom.reportRead();
-    return super.isUpdate;
-  }
-
-  @override
-  set isUpdate(bool value) {
-    _$isUpdateAtom.reportWrite(value, super.isUpdate, () {
-      super.isUpdate = value;
-    });
-  }
-
   final _$snapshotAtom = Atom(name: '_ProductControllerBase.snapshot');
 
   @override
@@ -274,17 +259,6 @@ mixin _$ProductController on _ProductControllerBase, Store {
   }
 
   @override
-  void setIsUpdate(bool value) {
-    final _$actionInfo = _$_ProductControllerBaseActionController.startAction(
-        name: '_ProductControllerBase.setIsUpdate');
-    try {
-      return super.setIsUpdate(value);
-    } finally {
-      _$_ProductControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   void setSnapshot(Stream<QuerySnapshot> value) {
     final _$actionInfo = _$_ProductControllerBaseActionController.startAction(
         name: '_ProductControllerBase.setSnapshot');
@@ -384,7 +358,6 @@ preco: ${preco},
 excluido: ${excluido},
 feito: ${feito},
 data: ${data},
-isUpdate: ${isUpdate},
 snapshot: ${snapshot}
     ''';
   }

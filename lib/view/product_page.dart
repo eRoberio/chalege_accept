@@ -90,7 +90,6 @@ class _ProductPageState extends State<ProductPage> {
                                 icon: Icons.edit,
                                 color: Colors.black,
                                 onTap: () {
-                                  controller.setIsUpdate(true);
                                   controller.updateProduct(context, doc);
                                 });
                           }),
@@ -118,7 +117,6 @@ class _ProductPageState extends State<ProductPage> {
         builder: (BuildContext context) {
           return FloatingActionButton(
             onPressed: () {
-              controller.setIsUpdate(false);
               controller.createProduct(context);
             },
             child: Icon(Icons.add),

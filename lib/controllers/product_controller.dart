@@ -69,11 +69,6 @@ abstract class _ProductControllerBase with Store {
   @action
   void setData(Timestamp value) => data = value;
   @observable
-  bool isUpdate = false;
-
-  @action
-  void setIsUpdate(bool value) => isUpdate = value;
-
   @observable
   Stream<QuerySnapshot> snapshot = Firestore.instance
       .collection('products')
@@ -112,6 +107,29 @@ abstract class _ProductControllerBase with Store {
         imageSelected(image);
       },
     );
+  }
+
+  @computed
+  bool get formValid => tituloValid && precoValid;
+
+  @computed
+  bool get tituloValid => titulo != null && titulo.length >= 3;
+  String get tituloError {
+    if (titulo == null || tituloValid)
+      return null;
+    else if (titulo.isEmpty)
+      return 'Campo obrigatório';
+    else
+      return 'Nome muito curto';
+  }
+
+  @computed
+  bool get precoValid => preco != null && preco != "R\$ 0,00";
+  String get precoError {
+    if (preco == null || precoValid)
+      return null;
+    else
+      return 'Campo obrigatório';
   }
 
   _verDialog(BuildContext context) {
@@ -315,44 +333,31 @@ abstract class _ProductControllerBase with Store {
             Observer(
               builder: (BuildContext context) {
                 return FlatButton(
-                  onPressed: () async {
-                    if (form.currentState.validate()) {
-                      Map<String, dynamic> data = {
-                        'titulo': titulo,
-                        'descricao': descricao,
-                        'preco': preco,
-                        'feito': false,
-                        'data': Timestamp.now(),
-                        'excluido': false,
-                      };
+                  onPressed: this.formValid
+                      ? () async {
+                          Map<String, dynamic> data = {
+                            'titulo': titulo,
+                            'descricao': descricao,
+                            'preco': preco,
+                            'feito': false,
+                            'data': Timestamp.now(),
+                            'excluido': false,
+                          };
 
-                      !isUpdate
-                          ? await repository
-                              .create(ProductData(
-                              titulo: titulo,
-                              descricao: descricao,
-                              preco: preco,
-                              feito: false,
-                              data: Timestamp.now(),
-                              excluido: false,
-                            ))
-                              .then((value) {
-                              setMensagem(value);
-                              print('Mensagem de criação: $mensagem');
-                            })
-                          : await repository
+                          await repository
                               .update(product.id, data)
                               .then((value) {
-                              setMensagem(value);
-                              print('Mensagem atualizaçao: $mensagem');
-                            });
-                    }
-                    setIsUpdate(false);
-                    zerarVariaveis();
+                            setMensagem(value);
+                            print('Mensagem atualizaçao: $mensagem');
+                          });
 
-                    this.readProducts();
-                    Navigator.of(context).pop();
-                  },
+                          zerarVariaveis();
+
+                          this.readProducts();
+                          Navigator.of(context).pop();
+                        }
+                      : null,
+                  disabledColor: Colors.grey[500],
                   color: Colors.green,
                   child: Text('Atualizar'),
                 );
@@ -402,6 +407,7 @@ abstract class _ProductControllerBase with Store {
                     builder: (BuildContext context) {
                       return TextFormField(
                         decoration: InputDecoration(
+                          errorText: tituloError,
                           hintText: 'Ex.: Pão Françês',
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
@@ -437,6 +443,7 @@ abstract class _ProductControllerBase with Store {
                         ],
                         keyboardType: TextInputType.number,
                         decoration: InputDecoration(
+                          errorText: precoError,
                           hintText: 'Ex.: 3,00 ',
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
@@ -458,25 +465,30 @@ abstract class _ProductControllerBase with Store {
             Observer(
               builder: (BuildContext context) {
                 return FlatButton(
-                  onPressed: () async {
-                    if (form.currentState.validate()) {
-                      await repository
-                          .create(ProductData(
-                        titulo: titulo,
-                        descricao: descricao,
-                        preco: preco,
-                        feito: false,
-                        data: Timestamp.now(),
-                        excluido: false,
-                      ))
-                          .then((value) {
-                        setMensagem(value);
-                        print('Mensagem de criação: $mensagem');
-                      });
-                    }
-                    this.readProducts();
-                    Navigator.of(context).pop();
-                  },
+                  onPressed: this.formValid
+                      ? () async {
+                          if (form.currentState.validate()) {
+                            await repository
+                                .create(ProductData(
+                              titulo: titulo,
+                              descricao: descricao,
+                              preco: preco,
+                              feito: false,
+                              data: Timestamp.now(),
+                              excluido: false,
+                            ))
+                                .then((value) {
+                              setMensagem(value);
+                              print('Mensagem de criação: $mensagem');
+                            });
+                          }
+                          this.readProducts();
+                          zerarVariaveis();
+
+                          Navigator.of(context).pop();
+                        }
+                      : null,
+                  disabledColor: Colors.grey[500],
                   color: Colors.green,
                   child: Text('Salvar'),
                 );
