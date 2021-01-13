@@ -12,7 +12,7 @@ Foi utilizado também para o isolamento de estado do MobX e o GetIt para injeç�
 Respeitei também uma estrutura de projeto (model-view-controller), onde me proporcionou uma quantidade imensa de possibilidades de organização.
 
 [HomePage]
-![image](https://user-images.githubusercontent.com/48862266/104393682-cd35bf00-5523-11eb-83ca-6bf7adf10914.png)
+![image](https://user-images.githubusercontent.com/48862266/104396501-8a76e580-5529-11eb-9902-635724ebe823.png)
 
 
 
