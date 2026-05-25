@@ -1,7 +1,5 @@
 import 'package:chalege_accept/models/product_models.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mobx/mobx.dart';
 
 part 'home_controller.g.dart';
@@ -11,10 +9,10 @@ class HomeController = HomeControllerBase with _$HomeController;
 abstract class HomeControllerBase with Store {
   
   @observable
-  ProductData productData;
+  late ProductData productData;
 
   @observable
-  Stream<QuerySnapshot> snapshot = Firestore.instance
+    Stream<QuerySnapshot> snapshot = FirebaseFirestore.instance
       .collection('products')
       .where('excluido', isEqualTo: false)
       .orderBy('data')

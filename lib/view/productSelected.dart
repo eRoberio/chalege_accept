@@ -13,7 +13,7 @@ class _ProductSelectedState extends State<ProductSelected> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(productController.productData.titulo),),
+      appBar: AppBar(title: Text(productController.productData.nome),),
     );
   }
 }

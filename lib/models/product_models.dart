@@ -2,20 +2,20 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ProductData {
   String id;
-  String titulo;
-  String descricao = "";
+  String nome;
+  String descricao;
   String preco;
-  bool excluido;
-  bool feito;
-  Timestamp data;
+  bool disponivel;
+  Timestamp dataCadastro;
+  String? imagemUrl;
 
   ProductData({
-    this.id,
-    this.titulo,
-    this.descricao,
-    this.excluido,
-    this.feito,
-    this.data,
-    this.preco,
+    required this.id,
+    required this.nome,
+    required this.descricao,
+    required this.preco,
+    required this.disponivel,
+    required this.dataCadastro,
+    this.imagemUrl,
   });
 }

@@ -6,24 +6,24 @@ part of 'product_controller.dart';
 // StoreGenerator
 // **************************************************************************
 
-// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
+// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$ProductController on _ProductControllerBase, Store {
-  Computed<bool> _$formValidComputed;
+  Computed<bool>? _$formValidComputed;
 
   @override
   bool get formValid =>
       (_$formValidComputed ??= Computed<bool>(() => super.formValid,
               name: '_ProductControllerBase.formValid'))
           .value;
-  Computed<bool> _$tituloValidComputed;
+  Computed<bool>? _$nomeValidComputed;
 
   @override
-  bool get tituloValid =>
-      (_$tituloValidComputed ??= Computed<bool>(() => super.tituloValid,
-              name: '_ProductControllerBase.tituloValid'))
+  bool get nomeValid =>
+      (_$nomeValidComputed ??= Computed<bool>(() => super.nomeValid,
+              name: '_ProductControllerBase.nomeValid'))
           .value;
-  Computed<bool> _$precoValidComputed;
+  Computed<bool>? _$precoValidComputed;
 
   @override
   bool get precoValid =>
@@ -31,7 +31,8 @@ mixin _$ProductController on _ProductControllerBase, Store {
               name: '_ProductControllerBase.precoValid'))
           .value;
 
-  final _$productDataAtom = Atom(name: '_ProductControllerBase.productData');
+  late final _$productDataAtom =
+      Atom(name: '_ProductControllerBase.productData', context: context);
 
   @override
   ProductData get productData {
@@ -46,52 +47,24 @@ mixin _$ProductController on _ProductControllerBase, Store {
     });
   }
 
-  final _$tituloAtom = Atom(name: '_ProductControllerBase.titulo');
+  late final _$nomeAtom =
+      Atom(name: '_ProductControllerBase.nome', context: context);
 
   @override
-  String get titulo {
-    _$tituloAtom.reportRead();
-    return super.titulo;
+  String get nome {
+    _$nomeAtom.reportRead();
+    return super.nome;
   }
 
   @override
-  set titulo(String value) {
-    _$tituloAtom.reportWrite(value, super.titulo, () {
-      super.titulo = value;
+  set nome(String value) {
+    _$nomeAtom.reportWrite(value, super.nome, () {
+      super.nome = value;
     });
   }
 
-  final _$productsAtom = Atom(name: '_ProductControllerBase.products');
-
-  @override
-  Future<List<ProductData>> get products {
-    _$productsAtom.reportRead();
-    return super.products;
-  }
-
-  @override
-  set products(Future<List<ProductData>> value) {
-    _$productsAtom.reportWrite(value, super.products, () {
-      super.products = value;
-    });
-  }
-
-  final _$mensagemAtom = Atom(name: '_ProductControllerBase.mensagem');
-
-  @override
-  String get mensagem {
-    _$mensagemAtom.reportRead();
-    return super.mensagem;
-  }
-
-  @override
-  set mensagem(String value) {
-    _$mensagemAtom.reportWrite(value, super.mensagem, () {
-      super.mensagem = value;
-    });
-  }
-
-  final _$descricaoAtom = Atom(name: '_ProductControllerBase.descricao');
+  late final _$descricaoAtom =
+      Atom(name: '_ProductControllerBase.descricao', context: context);
 
   @override
   String get descricao {
@@ -106,7 +79,8 @@ mixin _$ProductController on _ProductControllerBase, Store {
     });
   }
 
-  final _$precoAtom = Atom(name: '_ProductControllerBase.preco');
+  late final _$precoAtom =
+      Atom(name: '_ProductControllerBase.preco', context: context);
 
   @override
   String get preco {
@@ -121,76 +95,156 @@ mixin _$ProductController on _ProductControllerBase, Store {
     });
   }
 
-  final _$excluidoAtom = Atom(name: '_ProductControllerBase.excluido');
+  late final _$disponivelAtom =
+      Atom(name: '_ProductControllerBase.disponivel', context: context);
 
   @override
-  bool get excluido {
-    _$excluidoAtom.reportRead();
-    return super.excluido;
+  bool get disponivel {
+    _$disponivelAtom.reportRead();
+    return super.disponivel;
   }
 
   @override
-  set excluido(bool value) {
-    _$excluidoAtom.reportWrite(value, super.excluido, () {
-      super.excluido = value;
+  set disponivel(bool value) {
+    _$disponivelAtom.reportWrite(value, super.disponivel, () {
+      super.disponivel = value;
     });
   }
 
-  final _$feitoAtom = Atom(name: '_ProductControllerBase.feito');
+  late final _$imagemUrlAtom =
+      Atom(name: '_ProductControllerBase.imagemUrl', context: context);
 
   @override
-  bool get feito {
-    _$feitoAtom.reportRead();
-    return super.feito;
+  String? get imagemUrl {
+    _$imagemUrlAtom.reportRead();
+    return super.imagemUrl;
   }
 
   @override
-  set feito(bool value) {
-    _$feitoAtom.reportWrite(value, super.feito, () {
-      super.feito = value;
+  set imagemUrl(String? value) {
+    _$imagemUrlAtom.reportWrite(value, super.imagemUrl, () {
+      super.imagemUrl = value;
     });
   }
 
-  final _$dataAtom = Atom(name: '_ProductControllerBase.data');
+  late final _$dataCadastroAtom =
+      Atom(name: '_ProductControllerBase.dataCadastro', context: context);
 
   @override
-  Timestamp get data {
-    _$dataAtom.reportRead();
-    return super.data;
+  Timestamp get dataCadastro {
+    _$dataCadastroAtom.reportRead();
+    return super.dataCadastro;
   }
 
   @override
-  set data(Timestamp value) {
-    _$dataAtom.reportWrite(value, super.data, () {
-      super.data = value;
+  set dataCadastro(Timestamp value) {
+    _$dataCadastroAtom.reportWrite(value, super.dataCadastro, () {
+      super.dataCadastro = value;
     });
   }
 
-  final _$snapshotAtom = Atom(name: '_ProductControllerBase.snapshot');
+  late final _$productsAtom =
+      Atom(name: '_ProductControllerBase.products', context: context);
 
   @override
-  Stream<QuerySnapshot> get snapshot {
-    _$snapshotAtom.reportRead();
-    return super.snapshot;
+  Future<List<ProductData>> get products {
+    _$productsAtom.reportRead();
+    return super.products;
   }
 
+  bool _productsIsInitialized = false;
+
   @override
-  set snapshot(Stream<QuerySnapshot> value) {
-    _$snapshotAtom.reportWrite(value, super.snapshot, () {
-      super.snapshot = value;
+  set products(Future<List<ProductData>> value) {
+    _$productsAtom
+        .reportWrite(value, _productsIsInitialized ? super.products : null, () {
+      super.products = value;
+      _productsIsInitialized = true;
     });
   }
 
-  final _$createProductAsyncAction =
-      AsyncAction('_ProductControllerBase.createProduct');
+  late final _$isUploadingAtom =
+      Atom(name: '_ProductControllerBase.isUploading', context: context);
 
   @override
-  Future<void> createProduct(BuildContext context) {
-    return _$createProductAsyncAction.run(() => super.createProduct(context));
+  bool get isUploading {
+    _$isUploadingAtom.reportRead();
+    return super.isUploading;
   }
 
-  final _$_ProductControllerBaseActionController =
-      ActionController(name: '_ProductControllerBase');
+  @override
+  set isUploading(bool value) {
+    _$isUploadingAtom.reportWrite(value, super.isUploading, () {
+      super.isUploading = value;
+    });
+  }
+
+  late final _$previewImageUrlAtom =
+      Atom(name: '_ProductControllerBase.previewImageUrl', context: context);
+
+  @override
+  String? get previewImageUrl {
+    _$previewImageUrlAtom.reportRead();
+    return super.previewImageUrl;
+  }
+
+  @override
+  set previewImageUrl(String? value) {
+    _$previewImageUrlAtom.reportWrite(value, super.previewImageUrl, () {
+      super.previewImageUrl = value;
+    });
+  }
+
+  late final _$imagemLocalMobileAtom =
+      Atom(name: '_ProductControllerBase.imagemLocalMobile', context: context);
+
+  @override
+  File? get imagemLocalMobile {
+    _$imagemLocalMobileAtom.reportRead();
+    return super.imagemLocalMobile;
+  }
+
+  @override
+  set imagemLocalMobile(File? value) {
+    _$imagemLocalMobileAtom.reportWrite(value, super.imagemLocalMobile, () {
+      super.imagemLocalMobile = value;
+    });
+  }
+
+  late final _$pickedImageAtom =
+      Atom(name: '_ProductControllerBase.pickedImage', context: context);
+
+  @override
+  XFile? get pickedImage {
+    _$pickedImageAtom.reportRead();
+    return super.pickedImage;
+  }
+
+  @override
+  set pickedImage(XFile? value) {
+    _$pickedImageAtom.reportWrite(value, super.pickedImage, () {
+      super.pickedImage = value;
+    });
+  }
+
+  late final _$mensagemAtom =
+      Atom(name: '_ProductControllerBase.mensagem', context: context);
+
+  @override
+  String get mensagem {
+    _$mensagemAtom.reportRead();
+    return super.mensagem;
+  }
+
+  @override
+  set mensagem(String value) {
+    _$mensagemAtom.reportWrite(value, super.mensagem, () {
+      super.mensagem = value;
+    });
+  }
+
+  late final _$_ProductControllerBaseActionController =
+      ActionController(name: '_ProductControllerBase', context: context);
 
   @override
   void setProductData(ProductData value) {
@@ -204,22 +258,11 @@ mixin _$ProductController on _ProductControllerBase, Store {
   }
 
   @override
-  void setTitulo(String value) {
+  void setNome(String value) {
     final _$actionInfo = _$_ProductControllerBaseActionController.startAction(
-        name: '_ProductControllerBase.setTitulo');
+        name: '_ProductControllerBase.setNome');
     try {
-      return super.setTitulo(value);
-    } finally {
-      _$_ProductControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void setMensagem(String value) {
-    final _$actionInfo = _$_ProductControllerBaseActionController.startAction(
-        name: '_ProductControllerBase.setMensagem');
-    try {
-      return super.setMensagem(value);
+      return super.setNome(value);
     } finally {
       _$_ProductControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -248,55 +291,99 @@ mixin _$ProductController on _ProductControllerBase, Store {
   }
 
   @override
-  void setExcluido(bool value) {
+  void setDisponivel(bool value) {
     final _$actionInfo = _$_ProductControllerBaseActionController.startAction(
-        name: '_ProductControllerBase.setExcluido');
+        name: '_ProductControllerBase.setDisponivel');
     try {
-      return super.setExcluido(value);
+      return super.setDisponivel(value);
     } finally {
       _$_ProductControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void setFeito(bool value) {
+  void setImagemUrl(String? value) {
     final _$actionInfo = _$_ProductControllerBaseActionController.startAction(
-        name: '_ProductControllerBase.setFeito');
+        name: '_ProductControllerBase.setImagemUrl');
     try {
-      return super.setFeito(value);
+      return super.setImagemUrl(value);
     } finally {
       _$_ProductControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void setData(Timestamp value) {
+  void setPreviewImageUrl(String? value) {
     final _$actionInfo = _$_ProductControllerBaseActionController.startAction(
-        name: '_ProductControllerBase.setData');
+        name: '_ProductControllerBase.setPreviewImageUrl');
     try {
-      return super.setData(value);
+      return super.setPreviewImageUrl(value);
     } finally {
       _$_ProductControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void setSnapshot(Stream<QuerySnapshot> value) {
+  void setImagemLocalMobile(File? value) {
     final _$actionInfo = _$_ProductControllerBaseActionController.startAction(
-        name: '_ProductControllerBase.setSnapshot');
+        name: '_ProductControllerBase.setImagemLocalMobile');
     try {
-      return super.setSnapshot(value);
+      return super.setImagemLocalMobile(value);
     } finally {
       _$_ProductControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  dynamic showDialogExcluir(BuildContext context, String id) {
+  void setUploading(bool value) {
     final _$actionInfo = _$_ProductControllerBaseActionController.startAction(
-        name: '_ProductControllerBase.showDialogExcluir');
+        name: '_ProductControllerBase.setUploading');
     try {
-      return super.showDialogExcluir(context, id);
+      return super.setUploading(value);
+    } finally {
+      _$_ProductControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setMensagem(String value) {
+    final _$actionInfo = _$_ProductControllerBaseActionController.startAction(
+        name: '_ProductControllerBase.setMensagem');
+    try {
+      return super.setMensagem(value);
+    } finally {
+      _$_ProductControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setDataCadastro(Timestamp value) {
+    final _$actionInfo = _$_ProductControllerBaseActionController.startAction(
+        name: '_ProductControllerBase.setDataCadastro');
+    try {
+      return super.setDataCadastro(value);
+    } finally {
+      _$_ProductControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setPickedImage(XFile? value) {
+    final _$actionInfo = _$_ProductControllerBaseActionController.startAction(
+        name: '_ProductControllerBase.setPickedImage');
+    try {
+      return super.setPickedImage(value);
+    } finally {
+      _$_ProductControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic zerarVariaveis() {
+    final _$actionInfo = _$_ProductControllerBaseActionController.startAction(
+        name: '_ProductControllerBase.zerarVariaveis');
+    try {
+      return super.zerarVariaveis();
     } finally {
       _$_ProductControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -325,6 +412,28 @@ mixin _$ProductController on _ProductControllerBase, Store {
   }
 
   @override
+  dynamic showDialogExcluir(BuildContext context, String id) {
+    final _$actionInfo = _$_ProductControllerBaseActionController.startAction(
+        name: '_ProductControllerBase.showDialogExcluir');
+    try {
+      return super.showDialogExcluir(context, id);
+    } finally {
+      _$_ProductControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic createProduct(BuildContext context) {
+    final _$actionInfo = _$_ProductControllerBaseActionController.startAction(
+        name: '_ProductControllerBase.createProduct');
+    try {
+      return super.createProduct(context);
+    } finally {
+      _$_ProductControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void updateProduct(BuildContext context, ProductData product) {
     final _$actionInfo = _$_ProductControllerBaseActionController.startAction(
         name: '_ProductControllerBase.updateProduct');
@@ -336,53 +445,23 @@ mixin _$ProductController on _ProductControllerBase, Store {
   }
 
   @override
-  dynamic showFormUpdate({BuildContext context, ProductData product}) {
-    final _$actionInfo = _$_ProductControllerBaseActionController.startAction(
-        name: '_ProductControllerBase.showFormUpdate');
-    try {
-      return super.showFormUpdate(context: context, product: product);
-    } finally {
-      _$_ProductControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  dynamic showFormCreate({BuildContext context}) {
-    final _$actionInfo = _$_ProductControllerBaseActionController.startAction(
-        name: '_ProductControllerBase.showFormCreate');
-    try {
-      return super.showFormCreate(context: context);
-    } finally {
-      _$_ProductControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  dynamic zerarVariaveis() {
-    final _$actionInfo = _$_ProductControllerBaseActionController.startAction(
-        name: '_ProductControllerBase.zerarVariaveis');
-    try {
-      return super.zerarVariaveis();
-    } finally {
-      _$_ProductControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   String toString() {
     return '''
 productData: ${productData},
-titulo: ${titulo},
-products: ${products},
-mensagem: ${mensagem},
+nome: ${nome},
 descricao: ${descricao},
 preco: ${preco},
-excluido: ${excluido},
-feito: ${feito},
-data: ${data},
-snapshot: ${snapshot},
+disponivel: ${disponivel},
+imagemUrl: ${imagemUrl},
+dataCadastro: ${dataCadastro},
+products: ${products},
+isUploading: ${isUploading},
+previewImageUrl: ${previewImageUrl},
+imagemLocalMobile: ${imagemLocalMobile},
+pickedImage: ${pickedImage},
+mensagem: ${mensagem},
 formValid: ${formValid},
-tituloValid: ${tituloValid},
+nomeValid: ${nomeValid},
 precoValid: ${precoValid}
     ''';
   }

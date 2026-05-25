@@ -6,10 +6,11 @@ part of 'home_controller.dart';
 // StoreGenerator
 // **************************************************************************
 
-// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
+// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$HomeController on HomeControllerBase, Store {
-  final _$productDataAtom = Atom(name: 'HomeControllerBase.productData');
+  late final _$productDataAtom =
+      Atom(name: 'HomeControllerBase.productData', context: context);
 
   @override
   ProductData get productData {
@@ -17,29 +18,35 @@ mixin _$HomeController on HomeControllerBase, Store {
     return super.productData;
   }
 
+  bool _productDataIsInitialized = false;
+
   @override
   set productData(ProductData value) {
-    _$productDataAtom.reportWrite(value, super.productData, () {
+    _$productDataAtom.reportWrite(
+        value, _productDataIsInitialized ? super.productData : null, () {
       super.productData = value;
+      _productDataIsInitialized = true;
     });
   }
 
-  final _$snapshotAtom = Atom(name: 'HomeControllerBase.snapshot');
+  late final _$snapshotAtom =
+      Atom(name: 'HomeControllerBase.snapshot', context: context);
 
   @override
-  Stream<QuerySnapshot> get snapshot {
+  Stream<QuerySnapshot<Object?>> get snapshot {
     _$snapshotAtom.reportRead();
     return super.snapshot;
   }
 
   @override
-  set snapshot(Stream<QuerySnapshot> value) {
+  set snapshot(Stream<QuerySnapshot<Object?>> value) {
     _$snapshotAtom.reportWrite(value, super.snapshot, () {
       super.snapshot = value;
     });
   }
 
-  final _$pageAtom = Atom(name: 'HomeControllerBase.page');
+  late final _$pageAtom =
+      Atom(name: 'HomeControllerBase.page', context: context);
 
   @override
   int get page {
@@ -54,8 +61,8 @@ mixin _$HomeController on HomeControllerBase, Store {
     });
   }
 
-  final _$HomeControllerBaseActionController =
-      ActionController(name: 'HomeControllerBase');
+  late final _$HomeControllerBaseActionController =
+      ActionController(name: 'HomeControllerBase', context: context);
 
   @override
   void setPage(int value) {
@@ -80,7 +87,7 @@ mixin _$HomeController on HomeControllerBase, Store {
   }
 
   @override
-  void setSnapshot(Stream<QuerySnapshot> value) {
+  void setSnapshot(Stream<QuerySnapshot<Object?>> value) {
     final _$actionInfo = _$HomeControllerBaseActionController.startAction(
         name: 'HomeControllerBase.setSnapshot');
     try {

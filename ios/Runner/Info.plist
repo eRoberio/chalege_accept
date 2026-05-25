@@ -11,7 +11,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>chalege_accept</string>
+	<string>Panificadora Don Juan</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -41,5 +41,11 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Precisamos da sua localizacao para preencher endereco e rastrear a entrega.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Precisamos da sua localizacao para manter o rastreamento da entrega.</string>
+	<key>GMSApiKey</key>
+	<string>AIzaSyBeq6d7GOUC2Mne6aGgh0XNq0qeYFR7yUM</string>
 </dict>
 </plist>

@@ -7,14 +7,16 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    final deviceSize = MediaQuery.of(context).size;
     return ClipPath(
       clipper: WaveClipperOne(),
       child: Container(
         height: 280,
         color: Colors.redAccent,
         child: Center(
-          child: Text("Minha Loja",style: TextStyle(fontSize: 20),),
+          child: Text(
+            "Minha Loja",
+            style: TextStyle(fontSize: 20),
+          ),
         ),
       ),
     );
